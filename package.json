@@ -20,7 +20,9 @@
   },
   "homepage": "https://github.com/martianfield/glacial#readme",
   "dependencies": {
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "iceworm": "^0.3.0",
+    "mongodb": "^2.1.3"
   },
   "devDependencies": {
     "chai": "^3.4.1",
