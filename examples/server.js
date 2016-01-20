@@ -1,35 +1,19 @@
-'use strict';
-const express = require('express');
-const glacial = require(__dirname + '/../index.js');
-const iceworm = require('iceworm');
-const datastore = require(__dirname + '/datastore.js');
+'use strict'
 
-// create express app
-const port = process.env.PORT || 8080;
-const app =  express();
+const glacial = require(__dirname + '/../index.js')
 
-// create schema using iceworm
-const cat_schema = iceworm.Schema.create({
+// settings
+glacial.set('server.port', process.env.PORT || 8080)
+glacial.set('database.uri', 'mongodb://localhost:27017/test')
+
+// create schema
+const cat_schema = glacial.Schema.create({
   name:'*string',
   age:'number'
-});
-const dog_schema = iceworm.Schema.create({
-  name:'*string',
-  spots:'bool'
-});
+})
 
-// set glacial datastore
-glacial.set('datastore', datastore);
+// use schema
+glacial.use([cat_schema])
 
-// create route
-const cat_router = glacial.createRouter('cats', cat_schema, 'cats');
-const dog_router = glacial.createRouter('dogs', dog_schema, 'dogs');
-
-// use the route
-app.use(cat_router);
-app.use(dog_router);
-
-// start app
-app.listen(port);
-console.log(`serving at http://localhost:${port}`);
-
+// start
+glacial.serve()
