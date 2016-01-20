@@ -3,6 +3,9 @@
 const snowflea = require('snowflea')
 const iceworm = require('iceworm')
 
+// serving
+module.exports.run = require(__dirname + '/lib/server.js').run
+
 // routing
 module.exports.createRouter = require(__dirname + '/lib/createRouter.js')
 

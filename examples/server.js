@@ -13,7 +13,7 @@ const cat_schema = glacial.Schema.create({
 })
 
 // use schema
-glacial.use([cat_schema])
+//glacial.use([cat_schema])
 
 // start
-glacial.serve()
+glacial.run()
